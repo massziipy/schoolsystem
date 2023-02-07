@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            background-color: #d6dce3
+        }
+
+        th,
+        td {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            padding-left: 30px;
+            padding-right: 40px;
+        }
+
+        footer {
+
+            text-align: right;
+            font-weight: bold;
+        }
+    </style>
+    <div>
+        <input class="bt btn-primary" type="button" value="Go Back" onclick="history.back()">
+    </div>
+    <h3 style="text-align: center;">STUDENT PROGRESS CARD</h3>
+    <h4>Name:</h4>
+    <h4>class:</h4>
+    <h4>Roll no:</h4>
+    <table style="width:100%;margin-top: 3%;">
+        <tr style="text-align: center;">
+            <th>SUBJECT</th>
+            <th>MARK OBTAINED</th>
+            <th>TOTAL MARK</th>
+            <th>GRADE</th>
+        </tr>
+        <tr style="text-align: center;">
+            <td>sub 1</td>
+            <td>mark 1</td>
+            <td>t1</td>
+            <td>A</td>
+        </tr>
+        <tr style="text-align: center;">
+            <td>sub 2</td>
+            <td> mark 2</td>
+            <td> t2</td>
+            <td> B</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="footer">OVERALL MARK</td>
+            <td colspan="2"> 556</td>
+
+        </tr>
+        <tr>
+            <td colspan="2" class="footer">OVERALL GRADE</td>
+            <td colspan="2">B </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="footer">STATUS</td>
+            <td colspan="2">PASS </td>
+        </tr>
+    </table>
+</body>
+
+</html>

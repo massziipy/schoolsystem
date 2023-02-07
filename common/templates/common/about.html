@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #d6dce3 ;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar navbar-light fixed-top p-3" style="background-color:#ffffff ;">
+            <img src="data:image/jpeg;base64,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"
+                alt="">
+            <a class="navbar-brand ms-1 display-1" href="#">FIAMS </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+
+                        <a class="nav-link me-4" href="{% url 'common:hom' %}">Home </a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link activa" href="{% url 'common:abt' %}">About Us</a>
+
+                    </li>
+
+                    <li class="nav-item me-4">
+                        <a class="nav-link" href="{% url 'common:cntct' %}">Contact us</a>
+                    </li>
+
+                    <li class="nav-item me-4">
+                        <a class="nav-link" href="{% url 'common:admsn' %}">Admission</a>
+                    </li>
+
+
+                    <li class="nav-item me-2">
+                        <a href="{% url 'common:rgstr' %}" class="mybtn1">register now</a>
+                    </li>
+            </div>
+            </li>
+            </ul>
+            </div>
+        </nav>
+
+    </header>
+    <section>
+        <div class="inner">
+            <div class="row">
+                <h2>FIA MODEL SCHOOL</h2><br>
+                <div class="col-md-10">
+
+                    <p>
+                        The FIA Model School, was the first endeavor and realization of the dream of its
+                        founder (Dr.)F. Aysha,
+                        who has envisaged the establishment of an institution that offers affordable and most modern
+                        education to the Indian community.
+                        This School was inaugurated on 1st May 2001 by H.E. Rashid Abdulla Thaha, Deputy Minister of
+                        Education, in the presence of
+                        Hon. Late. C.H. Mohammed Koya, the Chief Minister of Kerala and Mr. Muthu Venkataramanan,
+                        the
+                        Consul
+                        General of India.
+                        The school now caters to the educational needs of five thousand children. This was soon
+                        followed
+                        by
+                        a number of other educational
+                        institutions, one excelling the other, all of them distinguished for the excellent results
+                        they
+                        achieved. <br> <br>
+
+                        The FIA Model School, Dubai, completing 22 glorious years in the field of education,
+                        enjoys
+                        the distinction of sending the
+                        largest number of candidates to SSLC and Higher Secondary examinations of Kerala State,
+                        among
+                        the
+                        schools in the Gulf countries.
+                        The school focuses it’s attention on imparting quality education for all without any
+                        distinction
+                        or
+                        discrimination and keeps it
+                        affordable to all. The track record of the school in the SSLC examinations since 1985
+                        prompted
+                        the
+                        Government of Kerala to permit
+                        the school to teach Higher Secondary syllabus and be the examination center for Higher
+                        Secondary
+                        examination of the State in 1993,
+                        thus becoming the first such school outside Kerala. In almost all the Board examinations,
+                        the
+                        school
+                        secures 100% results,
+                        with more than 80% of students achieving distinction marks (75% and above).<br><br>
+
+                        FIAMS, Dubai has been rated ACCEPTABLE (Overall) with many Good and Outstanding features by
+                        KHDA.
+                        The school holds the rare distinction of securing ‘Outstanding’ in Students’ Personal and
+                        Social
+                        Development for years.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footr" style="padding:1%;">
+                <p style="text-align: center;">Copyright © 2023 FIAMS. All rights reserved </p>
+
+            </div>
+        </footer>
+    </section>
+</body>
+
+</html>
