@@ -80,6 +80,17 @@
             border-bottom-width: 2px;
             transition: all 0.3s ease;
         }
+        .user-details .input-box select {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
 
         .user-details .input-box input:focus,
         .user-details .input-box input:valid {
@@ -186,74 +197,54 @@
     <div class="container">
         <div class="title">ADD STUDENT</div>
         <div class="content">
-            <form action="#">
+            <form action="" method="post">
+                {% csrf_token %}
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Name</span>
-                        <input type="text" placeholder="Enter your name" required>
+                        <input type="text" name="name" placeholder="Enter your name" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input type="text" placeholder="Enter your username" required>
+                        <input type="text" name="mail" placeholder="Enter your username" required>
                     </div>
                     <div class="input-box">
-                        <span class="details">Mobile</span>
+                        <span class="details" name="mob">Mobile</span>
                         <input type="text" placeholder="Enter your email" required>
                     </div>
                     <div class="input-box">
-                        <span class="details">Date Of Birth</span>
+                        <span class="details" name="dob">Date Of Birth</span>
                         <input type="text" placeholder="Date of Birth" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Address</span>
-                        <input type="text" placeholder="Enter your password" required>
+                        <input type="text" name="address" placeholder="Enter your password" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Guardian</span>
-                        <input type="text" placeholder="Enter guardian" required>
+                        <input type="text" name="guardian" placeholder="Enter guardian" required>
                     </div>
                     <div class="input-box">
                         <span class="details" >Upload photo</span>
-                        <input type="file" required >
+                        <input type="file" name="student" >
                     </div>
 
                     <div class="input-box">
+                       
                         <span class="details">Grade</span>
                         <select name="grade" id="grade">
-                            <option value=" ">Select Grade</option>
+                            <option value=" ">Select Class & Div</option>
                             <option value="Grade">Grade</option>
-                            <option value="11th">11</option>
-                            <option value="10th.">10</option>
-                            <option value="9th">9</option>
-                            <option value="8th">8</option>
-                            <option value="7th">7</option>
-                            <option value="6th">6</option>
-                            <option value="5th">5</option>
-                            <option value="4th">4</option>
-                            <option value="3rd">3</option>
-                            <option value="2nd">2</option>
-                            <option value="1st">1</option>
-                            <option value="kg-2">KG-2</option>
-                            <option value="kg-1">KG-1</option>
-                        </select>
-                    </div>
-
-
-                    <div class="input-box">
-                        <span class="details">Division</span>
-                        <select name="grade" id="grade">
-                            <option value=" ">Select Division</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
-                            <option value="D">D</option>    
+                            {% for class in data %}
+                            <option value="{{class.id}}">{{class.name}}</option>
+                             {% endfor %}
                         </select>
                     </div>
                 </div>
                 <div class="gender-details">
-                    <input type="radio" name="gender" id="dot-1">
-                    <input type="radio" name="gender" id="dot-2">
-                    <input type="radio" name="gender" id="dot-3">
+                    <input type="radio" value="male" name="gender" id="dot-1">
+                    <input type="radio" value="female" name="gender" id="dot-2">
+                    <input type="radio" value="other" name="gender" id="dot-3">
                     <span class="gender-title">Gender</span>
                     <div class="category">
                         <label for="dot-1">

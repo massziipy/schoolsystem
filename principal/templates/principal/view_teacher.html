@@ -48,21 +48,29 @@
                         <th>Phone No</th>
                         <th>Address</th>
                         <th>Qualification</th>
-                        <th>Experience</th>
+                        <th>Subject</th>
                         <th>Class teacher</th>
                     </tr>
                    
+                    {% for teacher in data %}
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{teacher.staff.Staffname}}</td>
+                        <td>{{teacher.staff.Staff_email}}</td>
+                        <td>{{teacher.staff.Staff_dob}}</td>
+                        <td>{{teacher.staff.Staff_gender}}</td>
+                        <td>{{teacher.staff.Staff_mobile}}</td>
+                        <td>{{teacher.staff.Staff_address}}</td>
+                        <td>{{teacher.staff.Staff_qualification}}</td>
+                        <td>{{teacher.Subject}}</td>
+                        {% for classes in class %}
+                         {% if teacher.id == classes.teacher.id %}
+                        <td>{{classes.name}}</td>
+        
+                        {% endif %}
+                        {% endfor %}
                     </tr>
+                    {% endfor %}
                 </table>
                
             </div>

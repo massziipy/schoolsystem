@@ -80,6 +80,17 @@
             border-bottom-width: 2px;
             transition: all 0.3s ease;
         }
+        .user-details .input-box select {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
 
         .user-details .input-box input:focus,
         .user-details .input-box input:valid {
@@ -186,33 +197,61 @@
     <div class="container">
         <div class="title">ASSIGN SALARY</div>
         <div class="content">
-            <form action="#">
+            <form method="post">
+                {% csrf_token %}
                 <div class="user-details">
                    
                     <div class="input-box">
                         <span class="details">Select Department</span>
-                        <select name="grade" id="grade">
-                            <option value=" ">Select Department</option>
-                            <option value="">Principal</option>
-                            <option value="">Teacher</option>
-                            <option value="">Non teaching</option>
+                        <select name="type" id="type">
+                            <option value="">Select Department</option>
+                            <option value="principal">Principal</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="officestaff">Office Staff</option>
 
                         </select>
                     </div>
 
 
-                    <div class="input-box">
+                    <div class="input-box" id="teacher" style="display: none;">
                         <span class="details">Select Staff</span>
-                        <select name="grade" id="grade">
-                            <option value=" ">Staff 1</option>
-                            <option value="">Staff 2</option>
+                        <select name="teacher" id="grade">
+                            <option value="">Select Staff</option>
+                            {% for staff in data %}
+                            {% if staff.Staff_type == 'teacher' %}
+                            <option value="{{staff.id}}">{{staff.Staffname}}</option>
+                            {% endif %}
+                            {% endfor %}
                         </select>
+                    </div>
 
+                    <div class="input-box" id="principal" style="display: none;">
+                        <span class="details">Select Staff</span>
+                        <select name="principal" id="grade">
+                            <option value="">Select Staff</option>
+                            {% for staff in data %}
+                            {% if staff.Staff_type == 'principal' %}
+                            <option value="{{staff.id}}">{{staff.Staffname}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="input-box" id="office" style="display: none;">
+                        <span class="details">Select Staff</span>
+                        <select name="officestaff" id="grade">
+                            <option value="">Select Staff</option>
+                            {% for staff in data %}
+                            {% if staff.Staff_type == 'officestaff' %}
+                            <option value="{{staff.id}}">{{staff.Staffname}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
                     </div>
 
                     <div class="input-box">
                         <span class="details">Enter Salary</span>
-                        <input type="text" placeholder="Enter salary" required>
+                        <input type="text" name="salary" placeholder="Enter salary" required>
                     </div>
                 </div>
 
@@ -225,6 +264,39 @@
             </form>
         </div>
     </div>
+    <script>
+        var type=document.getElementById('type')
+        var teacher= document.getElementById('teacher')
+        var office= document.getElementById('office')
+        var principal=document.getElementById('principal')
+
+        type.onchange=function(){
+            if(type.value=="teacher")
+            {
+              teacher.style.display='block'
+              office.style.display='none'
+              principal.style.display='none'
+            }
+            if(type.value=="principal")
+            {
+              teacher.style.display='none'
+              office.style.display='none'
+              principal.style.display='block'
+            }
+            if(type.value=="officestaff")
+            {
+              teacher.style.display='none'
+              office.style.display='block'
+              principal.style.display='none'
+            }
+            if(type.value=="")
+            {
+              teacher.style.display='none'
+              office.style.display='none'
+              principal.style.display='none'
+            }
+        }
+    </script>
 </body>
 
 </html>

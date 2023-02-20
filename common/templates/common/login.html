@@ -91,29 +91,16 @@
 
                         <input type="text" name="username" placeholder="USERNAME" />
                         <input type="password" name="password" placeholder="PASSWORD" />
-                        <select name="usertype" id="usertype" style="color: gray;">
+                        <!-- <select name="usertype" id="usertype" style="color: gray;">
                             <option value="usertype"> USER TYPE</option>
                             <option value="admin"> Admin</option>
                             <option value="teacher">Teacher</option>
                             <option value="student">Student</option>
                             <option value="principal">Principal</option>
-                        </select>
-                        <div id="adminlogin" style="display: none;">
-                            <a id="adminlink" href="{% url 'school_admin:admn' %}"><button class="submit" type="button">LOGIN</button></a>
-                        </div>
+                        </select> -->
+                      
                         <div id="userstypes">
-                            <a href=""><button id="userstypes" class="submit" type="button"
-                                    onclick="alert('select usertype')">LOGIN</button></a>
-                        </div>
-                        <div id="teacherlogin" style="display: none;">
-                            <a id="teacherlink" href="{% url 'Teacher:tchr' %}"><button class="submit" type="button">LOGIN</button></a>
-                        </div>
-                        <div id="principallogin" style="display:none;">
-                            <a id="principallink" href="{% url 'principal:princi_home' %}"><button class="submit" type="button">LOGIN</button></a>
-                            
-                        </div>
-                        <div id="studentlogin" style="display: none;">
-                            <a id="studentlink" href="{% url 'student:std_hom' %}"><button class="submit" type="button">LOGIN</button></a>
+                            <button id="userstypes" class="submit" type="submit">LOGIN</button>
                         </div>
                         <p style="color: red;"> </p>
 
@@ -133,7 +120,7 @@
             </div>
         </div>
     </section>
-    <script>
+    <!-- <script>
         var user = document.getElementById('usertype')
         var adminlogin = document.getElementById('adminlogin')
         var teacherlogin = document.getElementById('teacherlogin')
@@ -172,7 +159,7 @@
                 usertype.style.display = 'none'
             }
         }
-    </script>
+    </script> -->
 </body>
 
 </html>

@@ -81,6 +81,19 @@
             transition: all 0.3s ease;
         }
 
+        .user-details .input-box select {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+
         .user-details .input-box input:focus,
         .user-details .input-box input:valid {
             border-color: #9b59b6;
@@ -186,55 +199,75 @@
     <div class="container">
         <div class="title">ADD STAFF</div>
         <div class="content">
-            <form action="#">
+            <form method="post">
+                {% csrf_token %}
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Name</span>
-                        <input type="text" placeholder="Enter  name" required>
+                        <input type="text" name="name" placeholder="Enter  name" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input type="text" placeholder="Enter  email" required>
+                        <input type="text" name="email" placeholder="Enter  email" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Mobile</span>
-                        <input type="text" placeholder="Enter  phone no" required>
+                        <input type="text" name="mob" placeholder="Enter  phone no" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Date Of Birth</span>
-                        <input type="text" placeholder=" Enter Date of Birth" required>
+                        <input type="date" name="dob" placeholder=" Enter Date of Birth" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Address</span>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <textarea name="address" id="" cols="30" rows="10"></textarea>
                     </div>
                     <div class="input-box">
                         <span class="details">Qualification</span>
-                        <input type="text" placeholder="Enter  qualification" required>
+                        <input type="text" name="qualification" placeholder="Enter  qualification" required>
                     </div>
 
                     <div class="input-box">
                         <span class="details">Experience</span>
-                        <input type="text" placeholder="Enter Experience" required>
+                        <input type="text" name="experience" placeholder="Enter Experience" required>
                     </div>
 
 
 
                     <div class="input-box">
-                        <span class="details">Department</span>
-                        <select name="grade" id="grade">
-                            <option value=" ">Select Department</option>
-                            <option value="A">Principal</option>
-                            <option value="B">Teacher</option>
-                            <option value="C">Non teaching</option>
+                        <span class="details">Type</span>
+                        <select name="type" id="type">
+                            <option value="">Select Type</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="office">Non teaching</option>
 
                         </select>
                     </div>
+
+                    <div class="input-box" id="teacher" style="display: none;">
+                        <span class="details">Subject</span>
+                        <input type="text" name="subject" placeholder="Enter  qualification" >
+                    </div>
+
+            
+                        <div class="input-box" id="officestaff" style="display: none;">
+                            <span class="details">Designation</span>
+                            <select name="designation" id="designation">
+                                <option value="">Select Type</option>
+                                <option value="principal">Principal</option>
+                                <option value="officestaff">Office Staff</option>
+    
+                            </select>
+
+                        </div>
+
+                    
+
                 </div>
                 <div class="gender-details">
-                    <input type="radio" name="gender" id="dot-1">
-                    <input type="radio" name="gender" id="dot-2">
-                    <input type="radio" name="gender" id="dot-3">
+                    <input type="radio" value="male" name="gender" id="dot-1">
+                    <input type="radio" value="female" name="gender" id="dot-2">
+                    <input type="radio"value='other' name="gender" id="dot-3">
                     <span class="gender-title">Gender</span>
                     <div class="category">
                         <label for="dot-1">
@@ -250,9 +283,10 @@
                             <span class="gender">Prefer not to say</span>
                         </label>
                     </div>
+         
                 </div>
                 <div class="button">
-                    <input type="submit" value="Save">
+                    <input type="submit" value="Submit">
                 </div>
                 <div class="button">
                     <input type="button" value="Go Back" onclick="history.back()">
@@ -260,6 +294,28 @@
             </form>
         </div>
     </div>
+    <script>
+        let type = document.getElementById('type')
+        let teacher = document.getElementById('teacher')
+        let officestaff = document.getElementById('officestaff')
+
+        type.onclick = function () {
+            if (type.value == 'teacher') {
+                teacher.style.display = 'block'
+                officestaff.style.display = 'none'
+
+            }
+            if (type.value == 'office') {
+                officestaff.style.display = 'block'
+                teacher.style.display = 'none'
+            }
+        }
+
+
+
+
+
+    </script>
 </body>
 
 </html>

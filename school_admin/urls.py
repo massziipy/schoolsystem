@@ -10,4 +10,6 @@ path('add_class',views.add_class_page,name='ad_cls'),
 path('view_staff',views.view_staff_page,name='view_staf'),
 path('view_student',views.view_student_page,name='view_student'),
 path('assign_salary',views.salary_page,name='salary'),
+path('add_division',views.adddvision,name='adddiv'),
+path('addsubject',views.addsubjdect,name='addsub'),
 ]

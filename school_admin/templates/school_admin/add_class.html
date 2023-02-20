@@ -60,6 +60,17 @@ form .input-box span.details{
   font-weight: 500;
   margin-bottom: 5px;
 }
+.user-details .input-box select {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
 .user-details .input-box input{
   height: 45px;
   width: 100%;
@@ -162,15 +173,12 @@ form .user-details .input-box{
     <div class="container">
         <div class="title">ADD CLASS</div>
         <div class="content">
-          <form action="#">
+          <form method="post">
+            {% csrf_token %}
             <div class="user-details">
               <div class="input-box">
                 <span class="details">Add Grade</span>
-                <input type="text" placeholder="Enter grade" required>
-              </div>
-              <div class="input-box">
-                <span class="details">Add Division</span>
-                <input type="text" placeholder="Enter division" required>
+                <input type="text" name="grade" placeholder="Enter grade" required>
               </div>
               
             </div>

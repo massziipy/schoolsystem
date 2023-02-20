@@ -186,31 +186,32 @@
     <div class="container">
         <div class="title">STUDENT REGISTRATION FORM</div>
         <div class="content">
-            <form action="#">
+            <form method="post">
+                {% csrf_token %}
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Name</span>
-                        <input type="text" placeholder="Enter  name" required>
+                        <input type="text" name="name" placeholder="Enter  name" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input type="text" placeholder="Enter  email" required>
+                        <input type="text" name="mail" placeholder="Enter  email" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Mobile</span>
-                        <input type="text" placeholder="Enter  phone no" required>
+                        <input type="text" name="phone" placeholder="Enter  phone no" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Date Of Birth</span>
-                        <input type="text" placeholder=" Enter Date of Birth" required>
+                        <input type="text" name="dob" placeholder=" Enter Date of Birth" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Address</span>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <textarea name="address" id="" cols="30" rows="10"></textarea>
                     </div>
                     <div class="input-box">
                         <span class="details">Previous School</span>
-                        <input type="text" placeholder="Enter school" required>
+                        <input type="text" placeholder="Enter school" name="prevschool" required>
                     </div>
 
                   
@@ -239,9 +240,9 @@
 
                 </div>
                 <div class="gender-details">
-                    <input type="radio" name="gender" id="dot-1">
-                    <input type="radio" name="gender" id="dot-2">
-                    <input type="radio" name="gender" id="dot-3">
+                    <input type="radio" name="gender" value="male" id="dot-1">
+                    <input type="radio" name="gender" value="female" id="dot-2">
+                    <input type="radio" name="gender" value="not defined" id="dot-3">
                     <span class="gender-title">Gender</span>
                     <div class="category">
                         <label for="dot-1">

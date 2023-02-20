@@ -68,6 +68,17 @@
             font-weight: 500;
             margin-bottom: 5px;
         }
+        .user-details .input-box select {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
 
         .user-details .input-box input {
             height: 45px;
@@ -186,50 +197,31 @@
     <div class="container">
         <div class="title">ASSIGN CLASS TEACHER</div>
         <div class="content">
-            <form action="#">
+            <form method="post">
+
+                {% csrf_token %}
+                
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">SELECT GRADE</span>
-                        <select name="grade" id="grade">
-                            <option value=" ">GRADE</option>
-                            <option value="">12</option>
-                            <option value="">11</option>
-                            <option value="">10</option>
-                            <option value="">9</option>
-                            <option value="">8</option>
-                            <option value="">7</option>
-                            <option value="">6</option>
-                            <option value="">5</option>
-                            <option value="">4</option>
-                            <option value="">3</option>
-                            <option value="">2</option>
-                            <option value="">1</option>
-                            <option value="">KG-2</option>
-                            <option value="">KG-1</option>
+                        <select name="class" id="grade">
+                            <option value="">Select Class</option>
+                            {% for classes in class %}
+                            <option value="{{classes.id}}">{{classes.name}}</option>
+                            {% endfor %}
 
                         </select>
-                        <div class="input-box">
-                            <span class="details">SELECT DIVISION</span>
-                            <select name="grade" id="grade">
-                                <option value=" ">DIVISION</option>
-                                <option value="">A</option>
-                                <option value="">B</option>
-                                <option value="">C</option>
-                                <option value="">D</option>
-                                <option value="">E</option>
-                            </select>
-
-                        </div>
 
                         <div class="input-box">
                             <span class="details">SELECT TEACHER</span>
-                            <select name="grade" id="grade">
-                                <option value=" ">TEACHER</option>
-                                <option value="">T1</option>
-                                <option value="">T2</option>
-                                <option value="">T3</option>
-                                <option value="">T4</option>
-                                <option value="">T5</option>
+                            <select name="teacher" id="grade">
+                                <option value=" ">Select Teacher</option>
+                               {% for teachers in teacher %}
+
+                               <option value="{{teachers.id}}">{{teachers.staff.Staffname}}</option>
+
+
+                               {% endfor %}
                             </select>
 
                         </div>

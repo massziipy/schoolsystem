@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Document</title>
+
+    <style>
+        .cad {
+            width: 100%;
+            background-color: white;
+            border-radius: 5%;
+            padding: 5%;
+            margin: 2%;
+        }
+
+        .data {
+            color: red;
+            padding-left: 2%;
+        }
+
+        .mybtn1 {
+            background-color: #1a62af;
+            border: none;
+            color: white;
+            padding: 9px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+
+
+<body style="background-color:rgb(250, 246, 134);">
+    <h1 style="text-align: center;">Enquiries</h1><br>
+    {% if data %}
+
+    <div class="row">
+        {% for enquiry in data %}
+        <div class="col-md-3">
+            <div style="padding:25%">
+                <h3>Enquiry {{forloop.counter}}</h3>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="cad">
+                <b>Name :</b><span class="data">{{enquiry.name}}</span><br>
+                <b>Email:</b><span class="data">{{enquiry.email}}</span><br>
+                <b>Mobile:</b><span class="data">{{enquiry.mobile}}</span><br>
+                <b>DOB:</b><span class="data">{{enquiry.dob}}</span><br>
+                <b>Previous School:</b><span class="data">{{enquiry.prevschool}}</span><br>
+                <b>Grade:</b><span class="data">{{enquiry.grade}}</span><br>
+                <b>Gnder:</b><span class="data">{{enquiry.gender}}</span><br>
+                <b>Addresss</b><span class="data">{{enquiry.address}}</span><br>
+
+            </div>
+
+        </div>
+        <div class="col-md-3" style="padding-top: 5%;">
+
+            <a href="mailto:{{enquiry.email}}?subject= Reply for your request"><button class="mybtn1">
+
+                Send Response
+
+            </button></a><br><br>
+           
+
+        </div>
+        {% endfor %}
+
+    </div>
+    {% else %}
+    <div>
+        <h1>No Data</h1>
+    </div>
+
+    {% endif %}
+
+
+</body>
+
+</html>
