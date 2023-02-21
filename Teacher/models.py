@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 from common.models import Login
+from principal.models import Exams
 from school_admin.models import Classdivision,Fees,Subjects
 
 # Create your models here.
@@ -27,4 +28,8 @@ class Studentfees(models.Model):
 class Marks(models.Model):
     student=models.ForeignKey(Students, on_delete=models.CASCADE)
     subject=models.ForeignKey(Subjects,on_delete=models.CASCADE)
+    exam=models.ForeignKey(Exams,on_delete=models.CASCADE,default='')
     Mark=models.BigIntegerField(default=0)    
+
+  
+    

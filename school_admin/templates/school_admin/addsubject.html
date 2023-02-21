@@ -199,7 +199,7 @@
 
 <body>
     <div class="container">
-        <div class="title">ASSIGN SALARY</div>
+        <div class="title">Add Subjects</div>
         <div class="content">
             <form method="post">
                 {% csrf_token %}
@@ -207,7 +207,7 @@
 
                     <div class="input-box">
                         <span class="details">Select Department</span>
-                        <select name="class" id="class">
+                        <select name="classn" id="class">
                             <option value="">Select Class</option>
                             {% for class in data %}
                             <option value="{{class.id}}">{{class.name}}</option>
@@ -257,6 +257,41 @@
             })
         })
     </script>
+
+<!-- <script>
+    const form = document.querySelector('form');
+  
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+  
+    const inputs = Array.from(form.querySelectorAll('input[name]'));
+    const formData = {};
+  
+    inputs.forEach((input) => {
+      formData[input.name] = input.value;
+    });
+  
+    const jsonData = JSON.stringify(formData);
+    console.log(jsonData)
+  
+    // send the JSON data to the server using the Fetch API
+    fetch('/school_admin/addsubject', {
+      method: 'POST',
+      body: jsonData,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      // handle the response from the server here
+    })
+    .catch(error => {
+      // handle any errors that occur during the request here
+    });
+  });
+  
+  
+      </script> -->
 </body>
 
 </html>

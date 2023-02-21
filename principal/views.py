@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from school_admin.models import Principal,Teachers,Classdivision
+from school_admin.models import Principal,Teachers,Classdivision,Classroom
+from .models import Exams
 
 # Create your views here.
 
@@ -14,6 +15,22 @@ def view_teacher_page(request):
 
 def view_student_page(request):
     return render(request,'principal/view_student.html')
+
+def add_exams(request):
+    grade=Classroom.objects.all()
+    if request.method == 'POST':
+        exam=request.POST['exam']
+        grades=request.POST['grade']
+        grades=int(grades)
+        classrm=Classroom.objects.get(id=grades)
+        exams=Exams.objects.create(
+            Examname=exam,
+            grade_id=classrm.id
+
+        )
+
+
+    return render(request,'principal/add_exams.html',{'dat':grade})    
 
 def principal_home_page(request):
     princi=Principal.objects.get(id=request.session['principalid'])

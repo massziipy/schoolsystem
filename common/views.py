@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from common.models import Registration, Login
 from school_admin.models import AddStaff, Teachers,Principal,OfficeStaff
+from Teacher.models import Students
 
 # Create your views here.
 
@@ -52,7 +53,12 @@ def login_page(request,user):
          if request.method=='POST':
             username=request.POST['username']
             password=request.POST['password']
+            auth=Login.objects.get(usertype='admin')
+            if username==auth.username and auth.password==password:
+                return redirect("school_admin:admn")     
+                  
             if user=='teacher':
+
                 try:
                     Auth= Login.objects.get(username=username,password=password)
                     Teacher=Teachers.objects.get(authorize_id=Auth.id)
@@ -73,7 +79,16 @@ def login_page(request,user):
                         request.session['officestaffid']=officstaff.id
                         return redirect("office_staff:staffhome")   
                 except:
-                    return render(request,'common/login.html')        
+                    return render(request,'common/login.html') 
+
+            if user=='student':
+                try:
+                    Auth= Login.objects.get(username=username,password=password)
+                    Student=Students.objects.get(authorize_id=Auth.id)
+                    request.session['studentid']=Student.id
+                    return redirect("student:std_hom")
+                except:
+                    return render(request,'common/login.html')               
                     
                         
 
@@ -85,11 +100,11 @@ def signup_page(request):
     return render(request,'common/signup.html') 
 
 def usertype(request):
-    a=['principal','teacher','office']
+    a=['student','teacher','office']
     print(a[0])
     
     
-    return render(request,'common/user_type.html',{'princi':a[0],'teacher':a[1],'office':a[2]})    
+    return render(request,'common/user_type.html',{'student':a[0],'teacher':a[1],'office':a[2]})    
 
 def logout(request,user):
     if user=='teacher':
@@ -109,5 +124,11 @@ def logout(request,user):
         del request.session['officestaffid']
         request.session.flush()
         return redirect('common:login',usertype)
+
+    if user=='student':
+        usertype='student'
+        del request.session['studentid']
+        request.session.flush()
+        return redirect('common:login',usertype)    
 
                 

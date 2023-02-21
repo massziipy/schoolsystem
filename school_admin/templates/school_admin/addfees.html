@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
@@ -17,7 +18,8 @@
         }
 
         body {
-            height: 100vh;
+            height: 100%;
+            min-height: 800px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -28,6 +30,7 @@
         .container {
             max-width: 700px;
             width: 100%;
+            height: auto;
             background-color: #fff;
             padding: 25px 30px;
             border-radius: 5px;
@@ -81,6 +84,18 @@
             transition: all 0.3s ease;
         }
 
+        .user-details .input-box select {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
         .user-details .input-box input:focus,
         .user-details .input-box input:valid {
             border-color: #9b59b6;
@@ -111,17 +126,6 @@
             margin-right: 10px;
             background: #d9d9d9;
             border: 5px solid transparent;
-            transition: all 0.3s ease;
-        }
-        .user-details .input-box select {
-            height: 45px;
-            width: 100%;
-            outline: none;
-            font-size: 16px;
-            border-radius: 5px;
-            padding-left: 15px;
-            border: 1px solid #ccc;
-            border-bottom-width: 2px;
             transition: all 0.3s ease;
         }
 
@@ -195,34 +199,83 @@
 
 <body>
     <div class="container">
-        <div class="title">ADD MARKS</div>
+        <div class="title">Add Fees</div>
         <div class="content">
-            <form action="#" method="post">
+            <form method="post">
                 {% csrf_token %}
                 <div class="user-details">
-                    <div class="input-box" id="teacher">
-                      <span class="details">Select Class</span>
-                      <select name="classroom" id="grade">
-                          <option value="">Select Class</option>
-                          {% for class in data %}
-                          <option value="{{class.id}}">{{class.name}}</option>
-                          {% endfor %}
-                      </select>
-                  </div>
-                    
-                    
-                 
-                </div>
 
+                    <div class="input-box">
+                        <span class="details">Select Class</span>
+                        <select name="classn" id="class">
+                            <option value="">Select Class</option>
+                            {% for class in data %}
+                            <option value="{{class.id}}">{{class.name}}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+
+                    <div class="input-box" id="subjecttext">
+                        <span class="details">Enter Fees Name</span>
+                        <input type="text" id="nosub" name="feesname" placeholder="Enter Fees Name" required>
+                    </div>
+                    <div class="input-box" id="subjecttext">
+                        <span class="details">Enter Amount</span>
+                        <input type="number" id="nosub" name="amount" placeholder="Enter Fees" required>
+                    </div>
+                    
+                </div>
+               
+
+                
                 <div class="button">
                     <input type="submit" value="Save">
                 </div>
                 <div class="button">
                     <input type="button" value="Go back" onclick="history.back()">
                 </div>
-            </form>
         </div>
+
+        
+        </form>
     </div>
+    </div>
+    
+<!-- <script>
+    const form = document.querySelector('form');
+  
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+  
+    const inputs = Array.from(form.querySelectorAll('input[name]'));
+    const formData = {};
+  
+    inputs.forEach((input) => {
+      formData[input.name] = input.value;
+    });
+  
+    const jsonData = JSON.stringify(formData);
+    console.log(jsonData)
+  
+    // send the JSON data to the server using the Fetch API
+    fetch('/school_admin/addsubject', {
+      method: 'POST',
+      body: jsonData,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      // handle the response from the server here
+    })
+    .catch(error => {
+      // handle any errors that occur during the request here
+    });
+  });
+  
+  
+      </script> -->
 </body>
 
 </html>

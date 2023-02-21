@@ -10,4 +10,5 @@ urlpatterns = [
   path('principal_home',views.principal_home_page,name='princi_home'),
   path('edit_details',views.edit_details_page,name='edit'),
   path('assign_class_teacher',views.class_teacher_page,name='assign_cls_tr'),
+  path('addexams',views.add_exams,name='addexams'),
 ]

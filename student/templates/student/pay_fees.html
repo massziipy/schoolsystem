@@ -5,209 +5,94 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Document</title>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            background: linear-gradient(135deg, #71b7e6, #9b59b6);
-        }
-
-        .container {
-            max-width: 700px;
+        .cad {
             width: 100%;
-            background-color: #fff;
-            padding: 25px 30px;
-            border-radius: 5px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            background-color: white;
+            border-radius: 5%;
+            padding: 5%;
+            margin: 2%;
         }
 
-        .container .title {
-            font-size: 25px;
-            font-weight: 500;
-            position: relative;
+        .data {
+            color: red;
+            padding-left: 2%;
         }
 
-        .container .title::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 3px;
-            width: 30px;
-            border-radius: 5px;
-            background: linear-gradient(135deg, #71b7e6, #9b59b6);
-        }
-
-        .content form .user-details {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin: 20px 0 12px 0;
-        }
-
-        form .user-details .input-box {
-            margin-bottom: 15px;
-            width: calc(100% / 2 - 20px);
-        }
-
-        form .input-box span.details {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .user-details .input-box input {
-            height: 45px;
-            width: 100%;
-            outline: none;
-            font-size: 16px;
-            border-radius: 5px;
-            padding-left: 15px;
-            border: 1px solid #ccc;
-            border-bottom-width: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .user-details .input-box input:focus,
-        .user-details .input-box input:valid {
-            border-color: #9b59b6;
-        }
-
-        form .gender-details .gender-title {
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        form .category {
-            display: flex;
-            width: 80%;
-            margin: 14px 0;
-            justify-content: space-between;
-        }
-
-        form .category label {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        form .category label .dot {
-            height: 18px;
-            width: 18px;
-            border-radius: 50%;
-            margin-right: 10px;
-            background: #d9d9d9;
-            border: 5px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        #dot-1:checked~.category label .one,
-        #dot-2:checked~.category label .two,
-        #dot-3:checked~.category label .three {
-            background: #9b59b6;
-            border-color: #d9d9d9;
-        }
-
-        form input[type="radio"] {
-            display: none;
-        }
-
-        form .button {
-            height: 45px;
-            margin: 35px 0
-        }
-
-        form .button input {
-            height: 100%;
-            width: 100%;
-            border-radius: 5px;
+        .mybtn1 {
+            background-color: #1a62af;
             border: none;
-            color: #fff;
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: 1px;
+            color: white;
+            padding: 9px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            border-radius: 4px;
         }
-
-        form .button input:hover {
-            /* transform: scale(0.99); */
-            background: linear-gradient(-135deg, #71b7e6, #9b59b6);
-        }
-
-        @media(max-width: 584px) {
-            .container {
-                max-width: 100%;
-            }
-
-            form .user-details .input-box {
-                margin-bottom: 15px;
-                width: 100%;
-            }
-
-            form .category {
-                width: 100%;
-            }
-
-            .content form .user-details {
-                max-height: 300px;
-                overflow-y: scroll;
-            }
-
-            .user-details::-webkit-scrollbar {
-                width: 5px;
-            }
-        }
-
-        @media(max-width: 459px) {
-            .container .content .category {
-                flex-direction: column;
-            }
-        }
-    </style>
     </style>
 </head>
 
-<body>
-    <div class="container">
-        <div class="title">PAY FEES</div>
-        <div class="content">
-            <form action="#">
-                <div class="input-box">
-                    <span class="details"> Fee</span>
-                    <select name="grade" id="grade">
-                        <option value=" ">Select Fee</option>
-                        <option value="">Bus Fee</option>
-                        <option value="">Tuition Fee</option>
-                      
-                    </select>
-                </div>
 
-               
 
-                <div class="button">
-                    <input type="submit" value="Pay">
-                </div>
-                <div class="button">
-                    <input type="button" value="Go back" onclick="history.back()">
-                </div>
-            </form>
+<body style="background-color:rgb(250, 246, 134);">
+    <h1 style="text-align: center;">Pay Fee</h1><br>
+    {% if data %}
+
+    <div class="row">
+        {% for enquiry in data %}
+        <div class="col-md-3">
+            <div style="padding:25%">
+                <h3>Fees {{forloop.counter}}</h3>
+            </div>
+
         </div>
+        <div class="col-md-6">
+            <div class="cad">
+                
+                <b>Name :</b><span class="data">{{enquiry.fees.Feesname}}</span><br>
+                <b>Amount:</b><span class="data">{{enquiry.fees.Amount}}</span><br>
+                {% if enquiry.status == 'paid' %}
+                <b>Status:</b><span class="data" style="color: green;">Paid</span><br>
+                {% else %}
+                <b>Status:</b><span class="data">Not Paid</span><br>
+                {% endif %}
+
+            </div>
+
+        </div>
+        <div class="col-md-3" style="padding-top: 5%;">
+            {% if enquiry.status == 'not_paid' %}
+            <a href="{% url 'student:changefees' enquiry.id %}"><button class="mybtn1">
+
+                Pay Fees
+
+            </button></a><br><br>
+            {% endif %}
+           
+
+        </div>
+        {% endfor %}
+
     </div>
+    {% else %}
+    <div>
+        <h1>No Data</h1>
+    </div>
+
+    {% endif %}
+
+
 </body>
 
 </html>

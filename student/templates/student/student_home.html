@@ -41,7 +41,7 @@
 
 
                     <li class="nav-item me-2">
-                        <a href="" class="mybtn1">Logout</a>
+                        <a href="{% url 'common:logout' 'student' %}" class="mybtn1">Logout</a>
                     </li>
             </div>
             </li>
@@ -62,7 +62,7 @@
             </div>
             <div class="col-md-11">
                 <div class="cad2" style="width: 80%;background-image: url(../../static/images/vgg.jpg);height: 40%;width: 70%;">
-                    <a href="{% url 'student:view_report_card' %}">
+                    <a href="{% url 'student:selectexam' %}">
                         <h3 style="margin:6%; color: aliceblue;">VIEW PROGRESS CARD</h3>
                     </a>
                 </div>

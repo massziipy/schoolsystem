@@ -33,45 +33,71 @@
         }
     </style>
     <div>
-        <input class="bt btn-primary" type="button" value="Go Back" onclick="history.back()">
+        <input class="bt btn-primary" id="b" type="button" value="Go Back" onclick="history.back()">
     </div>
     <h3 style="text-align: center;">STUDENT PROGRESS CARD</h3>
-    <h4>Name:</h4>
-    <h4>class:</h4>
-    <h4>Roll no:</h4>
+    <h4>Name: {{student.Studentname}}</h4>
+    <h4>class:{{student.Studentclass.name}}</h4>
     <table style="width:100%;margin-top: 3%;">
         <tr style="text-align: center;">
             <th>SUBJECT</th>
             <th>MARK OBTAINED</th>
             <th>TOTAL MARK</th>
             <th>GRADE</th>
-        </tr>
+        </tr> 
+        {% if score %}
+
+        {% for data in score %}
+        
         <tr style="text-align: center;">
-            <td>sub 1</td>
-            <td>mark 1</td>
-            <td>t1</td>
+            <td>{{data.subject.Subjectname}}</td>
+            <td>{{data.Mark}}</td>
+            <td>100</td>
+            {% if data.Mark >= 90 %}
             <td>A</td>
+            {% elif data.Mark >= 80 and data.Mark <= 89 %}
+            <td>B</td>
+            {% elif data.Mark >= 70 and data.Mark <= 79 %}
+            <td>C</td>
+            {% elif data.Mark >= 60 and data.Mark <= 69 %}
+            <td>D</td>
+            {% elif data.Mark >= 50 and data.Mark <= 59 %}
+            <td>E</td>
+            {% else %}
+            <td>F</td>
+            {% endif %}
         </tr>
-        <tr style="text-align: center;">
-            <td>sub 2</td>
-            <td> mark 2</td>
-            <td> t2</td>
-            <td> B</td>
-        </tr>
+        {% endfor %}
         <tr>
             <td colspan="2" class="footer">OVERALL MARK</td>
-            <td colspan="2"> 556</td>
+            <td colspan="2"> {{total}}</td>
 
         </tr>
         <tr>
             <td colspan="2" class="footer">OVERALL GRADE</td>
-            <td colspan="2">B </td>
+            <td colspan="2">{{grad}} </td>
         </tr>
         <tr>
             <td colspan="2" class="footer">STATUS</td>
-            <td colspan="2">PASS </td>
+            <td colspan="2">{{stat}} </td>
         </tr>
-    </table>
+        {% else %}
+        {% endif %}
+    </table><br>
+    <button id="a" onclick="window.print()">Print this page</button>
+
+    <script>
+        var a = document.getElementById('a')
+        var b = document.getElementById('b')
+
+        a.onclick=function(){
+            a.style.display='none'
+            b.style.display='none'
+            window.print()
+            a.style.display='block'
+            b.style.display='block'
+        }
+    </script>
 </body>
 
 </html>

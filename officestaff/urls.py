@@ -5,6 +5,8 @@ app_name = 'office_staff'
 
 urlpatterns = [
     path('staffhome',views.staffhome,name='staffhome'),
-     path('enquiries',views.enquiries,name='enquiries')
+    path('enquiries',views.enquiries,name='enquiries'),
+    path('paymentreq',views.sendpaymentreq,name='paymentreq'),
+    path('assignfees/<int:clsid>',views.assignfees,name='assignfees'),
 
 ]

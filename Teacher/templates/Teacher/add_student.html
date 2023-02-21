@@ -197,7 +197,7 @@
     <div class="container">
         <div class="title">ADD STUDENT</div>
         <div class="content">
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="user-details">
                     <div class="input-box">
@@ -206,15 +206,15 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input type="text" name="mail" placeholder="Enter your username" required>
+                        <input type="text" name="mail" placeholder="Enter your email" required>
                     </div>
                     <div class="input-box">
-                        <span class="details" name="mob">Mobile</span>
-                        <input type="text" placeholder="Enter your email" required>
+                        <span class="details" name="mobile">Mobile</span>
+                        <input type="text" name="mob" placeholder="Enter your Mobile" required>
                     </div>
                     <div class="input-box">
-                        <span class="details" name="dob">Date Of Birth</span>
-                        <input type="text" placeholder="Date of Birth" required>
+                        <span class="details" >Date Of Birth</span>
+                        <input type="date" name="dob" placeholder="Date of Birth" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Address</span>

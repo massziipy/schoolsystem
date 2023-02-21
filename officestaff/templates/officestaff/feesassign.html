@@ -195,20 +195,31 @@
 
 <body>
     <div class="container">
-        <div class="title">ADD MARKS</div>
+        <div class="title">Assign Fees</div>
         <div class="content">
-            <form action="#" method="post">
-                {% csrf_token %}
+            <form method="post">
+               {% csrf_token %} 
                 <div class="user-details">
-                    <div class="input-box" id="teacher">
-                      <span class="details">Select Class</span>
-                      <select name="classroom" id="grade">
-                          <option value="">Select Class</option>
-                          {% for class in data %}
-                          <option value="{{class.id}}">{{class.name}}</option>
-                          {% endfor %}
-                      </select>
-                  </div>
+                  <div class="input-box" id="teacher">
+                    <span class="details">Select Student</span>
+                    <select name="students" id="grades">
+                        <option value="">Select Student</option>
+                        {% for student in data %}
+                        <option value="{{student.id}}">{{student.Studentname}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input-box" id="teacher">
+                    <span class="details">Select Fees</span>
+                    <select name="fees" id="grade">
+                        <option value="">Select Fees</option>
+                        {% for fees in feesdata %}
+                        <option value="{{fees.id}}">{{fees.Feesname}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
                     
                     
                  

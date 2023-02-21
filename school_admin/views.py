@@ -1,16 +1,19 @@
 from django.shortcuts import render
-from .models import Teachers,Login,AddStaff,OfficeStaff,Principal,Salary,Classroom,Classdivision
+from .models import Teachers,Login,AddStaff,OfficeStaff,Principal,Salary,Classroom,Classdivision,Subjects,Fees
+from Teacher.models import Studentfees
 
 # Create your views here.
 
 def admin_home_page(request):
-    # up=Login.objects.get(id=8)
+
+    # up=Login.objects.create(username='admin',password='1234',usertype='admin')
+    # up=Studentfees.objects.all()
    
-    # # # print(up)
-    # # # for i in up:
-    # # #     staffsalary=Salary.objects.create(
-    # # #                 Staff_salary=0,
-    # # #                 staff_id=i.id
+    # # # # print(up)
+    # # # # for i in up:
+    # # # #     staffsalary=Salary.objects.create(
+    # # # #                 Staff_salary=0,
+    # # # #                 staff_id=i.id
     # up.delete()
 
     #             )
@@ -31,6 +34,8 @@ def add_staff_page(request):
         designation=request.POST['designation']
 
         if type=='teacher':
+
+
 
             log=Login.objects.create(
                 username=email,
@@ -151,6 +156,25 @@ def view_staff_page(request):
     staff= AddStaff.objects.all()
     return render(request,'school_admin/view_staff.html',{'data':staff}) 
 
+def addfees(request):
+    cls= Classroom.objects.all()
+    if request.method=='POST':
+        feesname=request.POST['feesname']
+        amount=request.POST['amount']
+        classname=request.POST['classn']
+        classname=int(classname)
+
+        clsrm=Classroom.objects.get(id=classname)
+
+        Feess=Fees.objects.create(
+            Feesname=feesname,
+            Amount=amount,
+            classname_id=clsrm.id,
+        )
+
+
+    return render(request,'school_admin/addfees.html',{'data':cls})     
+
 def view_student_page(request):
     return render(request,'school_admin/view_student.html') 
 
@@ -194,4 +218,17 @@ def salary_page(request):
 
 def addsubjdect(request):
     classs=Classroom.objects.all()
+    if request.method=='POST':
+        classname=request.POST['classn']
+        classrm=Classroom.objects.get(id=int(classname))
+        classno=request.POST['nosub']
+        clss=int(classno)
+        for i in range(clss):
+            # print(f"sub_{i}")
+        
+            sub=request.POST[f'sub_{i+1}']
+            subject=Subjects.objects.create(
+                Subjectname=sub,
+                classname_id=classrm.id,
+            )
     return render(request,'school_admin/addsubject.html',{'data':classs})  

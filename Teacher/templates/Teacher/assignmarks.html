@@ -195,20 +195,44 @@
 
 <body>
     <div class="container">
-        <div class="title">ADD MARKS</div>
+        <div class="title">Assign MARKS</div>
         <div class="content">
-            <form action="#" method="post">
-                {% csrf_token %}
+            <form method="post">
+               {% csrf_token %} 
                 <div class="user-details">
                     <div class="input-box" id="teacher">
-                      <span class="details">Select Class</span>
-                      <select name="classroom" id="grade">
-                          <option value="">Select Class</option>
-                          {% for class in data %}
-                          <option value="{{class.id}}">{{class.name}}</option>
+                      <span class="details">Select Subject</span>
+                      <select name="subject" id="grade">
+                          <option value="">Select Subject</option>
+                          {% for subject in subj %}
+                          <option value="{{subject.id}}">{{subject.Subjectname}}</option>
                           {% endfor %}
                       </select>
                   </div>
+                  <div class="input-box" id="teacher">
+                    <span class="details">Select Class</span>
+                    <select name="students" id="grades">
+                        <option value="">Select Student</option>
+                        {% for student in data %}
+                        <option value="{{student.id}}">{{student.Studentname}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input-box" id="teacher">
+                    <span class="details">Select Exam</span>
+                    <select name="exam" id="grade">
+                        <option value="">Select Exam</option>
+                        {% for exam in exm %}
+                        <option value="{{exam.id}}">{{exam.Examname}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+                  <div class="input-box">
+                    <span class="details" >Enter Marks</span>
+                    <input type="text" name="marks" placeholder="Enter Marks" required>
+                </div>
                     
                     
                  
