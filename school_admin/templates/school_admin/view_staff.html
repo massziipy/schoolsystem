@@ -68,6 +68,69 @@
         </div>
 
     </div>
+    <select name="hh" id="hh">
+        <option value=""></option>
+
+    </select>
+
+    <!-- <script>
+        $(document).ready(function() {
+            
+            $('#countries').change(function() {
+                var country_id = $(this).val();
+                if (country_id) {
+                    $.ajax({
+                        url: {url},
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#cities').empty();
+                            $('#cities').append($('<option>').text('Select a city').attr('value', ''));
+                            $.each(data, function(index, city) {
+                                $('#cities').append($('<option>').text(city.name).attr('value', city.id));
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                } else {
+                    $('#cities').empty();
+                    $('#cities').append($('<option>').text('Select a city').attr('value', ''));
+                }
+            });
+        });
+        </script> -->
+<!-- 
+        <script>
+            $(document).ready(function() {
+                $.ajax({
+                    url: '{% url "get_countries" %}',
+                    dataType: 'json',
+                    success: function(data) {
+                        $.each(data, function(index, country) {
+                            $('#countries').append($('<option>').text(country.name).attr('value', country.id));
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+            </script> -->
+            
+
+        <select id="countries">
+            <option value="">Select a country</option>
+            {% for country in countries %}
+                <option value="{{ country.id }}">{{ country.name }}</option>
+            {% endfor %}
+        </select>
+        
+        <select id="cities">
+            <option value="">Select a city</option>
+        </select>
+   
+        
 
 </body>
 

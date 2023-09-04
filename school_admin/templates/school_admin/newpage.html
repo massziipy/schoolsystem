@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    {% csrf_token %}
+    <select name="" id="hiii">
+        {% for catname in data %}
+        <option value="{{catname.Staff_type}}">{{catname.Staff_type}}</option>
+        {% endfor %}
+
+    </select>
+
+
+    <select name="staff" id="hoi">
+
+    </select>
+
+   <div id="teacherdet"> 
+
+
+
+   </div>
+
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
+                }
+            })
+            $('#hiii').change(function () {
+                var staff = $("#hiii").val();
+                if (staff) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{% url 'school_admin:getdet' %}",
+                        data: {
+                            'staff': staff
+                        },
+                        success: function (response) {
+                            data=response.data
+                            console.log(data)
+                            $('#hoi').empty();
+                            $('#hoi').append($('<option>').text('Select a Staff').attr('value', ''));
+                            for (d in data) {
+                                console.log(d)
+                                $('#hoi').append($('<option>').text(data[d].name).attr('value',data[d].id));
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                } else {
+                    $('#hoi').empty();
+                    $('#hoi').append($('<option>').text('Select a city').attr('value', ''));
+                }
+            });
+        });
+    </script>
+    <script>
+
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
+                }
+            })
+            $('#hoi').change(function(){
+                var details=$(this).val()
+                if(details)
+                {
+                    $.ajax({
+                        url: "/school_admin"+"/getstaff/"+details,  
+                        dataType: 'json',
+                        success:function(response){
+                            datas=response.dat
+                            console.log(datas)
+                            $('#teacherdet').empty()
+                            for(t in datas)
+                            {
+                                $('#teacherdet').append($('<h1>').text('salary is'+ datas[t].salary))
+
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    })
+                }
+                else {
+                    $('#teacherdet').empty();
+                    $('#hoi').append($('<h1>').text('no salary'));
+                }
+            })
+
+        })
+
+    </script>
+</body>
+
+</html>

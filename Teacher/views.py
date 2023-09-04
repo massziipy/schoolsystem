@@ -4,6 +4,7 @@ from Teacher.models import Students,Marks
 from common.models import Login
 from principal.models import Exams
 
+
 # Create your views here.
 
 

@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from common.models import Registration, Login
 from school_admin.models import AddStaff, Teachers,Principal,OfficeStaff
 from Teacher.models import Students
+from django.core.cache import cache
 
 # Create your views here.
 

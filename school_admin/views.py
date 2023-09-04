@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Teachers,Login,AddStaff,OfficeStaff,Principal,Salary,Classroom,Classdivision,Subjects,Fees
 from Teacher.models import Studentfees
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -155,6 +156,21 @@ def adddvision(request):
 def view_staff_page(request):
     staff= AddStaff.objects.all()
     return render(request,'school_admin/view_staff.html',{'data':staff}) 
+
+def newcheck(request):
+    staff= AddStaff.objects.all()
+    return render(request,'school_admin/newpage.html',{'data':staff}) 
+
+def getdet(request):
+    stafftype=request.POST['staff']
+    staffs = AddStaff.objects.filter(Staff_type=stafftype)
+    data = [{'id': staff.id, 'name': staff.Staffname} for staff in staffs]
+    return JsonResponse({'data':data})
+
+def getstaffinfo(request,sid):
+    sal=Salary.objects.get(staff_id=sid)
+    data=[{'salary':sal.Staff_salary}]
+    return JsonResponse({'dat':data})
 
 def addfees(request):
     cls= Classroom.objects.all()

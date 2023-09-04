@@ -13,4 +13,7 @@ path('assign_salary',views.salary_page,name='salary'),
 path('add_division',views.adddvision,name='adddiv'),
 path('addsubject',views.addsubjdect,name='addsub'),
 path('addfees',views.addfees,name='addfees'),
+path('newpage',views.newcheck,name='newcheck'),
+path('getdet',views.getdet,name='getdet'),
+path('getstaff/<int:sid>',views.getstaffinfo,name='getstaff'),
 ]
